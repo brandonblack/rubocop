@@ -15,7 +15,9 @@ module RuboCop
       class RedundantFreeze < Cop
         include FrozenStringLiteral
 
-        MSG = 'Freezing immutable objects is pointless.'.freeze
+        MSG = 'Freezing immutable string objects is has no effect. If this ' \
+              'usage is an attempt to be backward compatible, set ' \
+              '`TargetRubyVersion` accordingly to resolve this.'.freeze
 
         def on_send(node)
           receiver, method_name, *args = *node
